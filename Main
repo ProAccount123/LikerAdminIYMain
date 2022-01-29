@@ -4459,7 +4459,7 @@ CMDs[#CMDs + 1] = {NAME = 'notify [text]', DESC = 'Sends you a notification with
 CMDs[#CMDs + 1] = {NAME = 'lastcommand / lastcmd', DESC = 'Executes the previous command used'}
 CMDs[#CMDs + 1] = {NAME = 'exit', DESC = 'Kills roblox process'}
 
-CMDs[#CMDs + 1] = {NAME = 'noclip', DESC = 'Go through objects'}
+CMDs[#CMDs + 1] = {NAME = 'noclip / nc', DESC = 'Go through objects'}
 CMDs[#CMDs + 1] = {NAME = 'unnoclip / clip', DESC = 'Disables noclip'}
 CMDs[#CMDs + 1] = {NAME = 'fly [speed]', DESC = 'Makes you fly'}
 CMDs[#CMDs + 1] = {NAME = 'unfly', DESC = 'Disables fly'}
@@ -6869,7 +6869,7 @@ addcmd('exit',{},function(args, speaker)
 end)
 
 local Noclipping = nil
-addcmd('noclip',{},function(args, speaker)
+addcmd('noclip',{'nc'},function(args, speaker)
 	Clip = false
 	wait(0.1)
 	local function NoclipLoop()
@@ -12086,7 +12086,7 @@ for i=0,1,0.1 do
 	wait()
 end
 Credits:TweenPosition(UDim2.new(0,0,0.9,30), "Out", "Quart", 0.2)
-notify("Welcome", "Welcome to LikerIY, "..game:GetService("Players").LocalPlayer.Name.."!")
+notify("LikerIY", "Welcome to LikerIY, "..game:GetService("Players").LocalPlayer.Name.."!")
 wait(0.5)
 Logo:Destroy()
 Credits:Destroy()
