@@ -6165,7 +6165,7 @@ end)
 PluginsGUI = PluginEditor.background
 
 function addPlugin(name)
-	if name:lower() == 'plugin file name' or name:lower() == 'LikerIY.lkr' or name == 'iy_fe' then
+	if name:lower() == 'plugin file name' or name:lower() == 'likeriy' or name:lower() == 'iy_fe' then
 		notify('Plugin Error','Please enter a valid plugin')
 	else
 		local file
@@ -6187,7 +6187,7 @@ function addPlugin(name)
 				notify('Plugin Error','This plugin is already added')
 			end
 		else
-			notify('Plugin Error','Cannot locate file "'..fileName..'". Is the file in the correct folder?')
+			notify('Plugin Error','Cannot locate file "'..fileName..'".')
 		end
 	end
 end
@@ -11992,7 +11992,7 @@ end
 IYMouse.Move:Connect(checkTT)
 
 task.spawn(function()
-	if pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version'))() end) then
+	if pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/ProAccount123/LikerAdminIYMain/main/Main'))() end) then
 		if Announcement and Announcement ~= '' then
 			local AnnGUI = Instance.new("Frame")
 			local background = Instance.new("Frame")
