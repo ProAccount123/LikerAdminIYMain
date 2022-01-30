@@ -6392,7 +6392,7 @@ addcmd('infhealth',{'infh'},function(args, speaker)
         pcall(function()
             game:GetService("Players").LocalPlayer.Character.Humanoid.Health = math.huge
         end)
-        wait(0.2)
+        wait(0.01)
     until not isinfhealth
 end)
 
