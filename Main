@@ -12,7 +12,7 @@ if not game:IsLoaded() then
 	notLoaded:Destroy()
 end
 
-ver = '1.1.2'
+ver = '1.1.5'
 
 Players = game:GetService("Players")
 
@@ -4557,14 +4557,17 @@ CMDs[#CMDs + 1] = {NAME = 'maxzoom [num]', DESC = 'Maximum camera zoom'}
 CMDs[#CMDs + 1] = {NAME = 'minzoom [num]', DESC = 'Minimum camera zoom'}
 CMDs[#CMDs + 1] = {NAME = 'fov [num]', DESC = 'Adjusts field of view (default is 70)'}
 CMDs[#CMDs + 1] = {NAME = 'fixcam / restorecam', DESC = 'Fixes camera'}
+CMDs[#CMDs + 1] = {NAME = 'infhealth / infh', DESC = "Sets your health to  'math.huge'"}
+CMDs[#CMDs + 1] = {NAME = 'uninfhealth / uninfh', DESC = "Undoes infhealth"}
+CMDs[#CMDs + 1] = {NAME = 'toggleinfhealth / toggleinfh', DESC = "Toggles infhealth"}
 CMDs[#CMDs + 1] = {NAME = 'enableshiftlock / enablesl', DESC = 'Enables the shift lock option'}
 CMDs[#CMDs + 1] = {NAME = 'lookat [plr]', DESC = 'Moves your camera view to a player'}
 
-CMDs[#CMDs + 1] = {NAME = 'btools (CLIENT)', DESC = 'Gives you building tools (DOES NOT REPLICATE)'}
-CMDs[#CMDs + 1] = {NAME = 'f3x (CLIENT)', DESC = 'Gives you F3X building tools (DOES NOT REPLICATE)'}
+CMDs[#CMDs + 1] = {NAME = 'btools (CLIENT)', DESC = 'Gives you building tools (DOES NOT REPLICATE TO SERVER)'}
+CMDs[#CMDs + 1] = {NAME = 'f3x (CLIENT)', DESC = 'Gives you F3X building tools (DOES NOT REPLICATE TO SERVER)'}
 CMDs[#CMDs + 1] = {NAME = 'partname / partpath', DESC = 'Allows you to click a part to see its path & name'}
-CMDs[#CMDs + 1] = {NAME = 'delete [instance name] (CLIENT)', DESC = 'Removes any part with a certain name from the workspace (DOES NOT REPLICATE)'}
-CMDs[#CMDs + 1] = {NAME = 'deleteclass / dc [class name] (CLIENT)', DESC = 'Removes any part with a certain classname from the workspace (DOES NOT REPLICATE)'}
+CMDs[#CMDs + 1] = {NAME = 'delete [instance name] (CLIENT)', DESC = 'Removes any part with a certain name from the workspace (DOES NOT REPLICATE TO SERVER)'}
+CMDs[#CMDs + 1] = {NAME = 'deleteclass / dc [class name] (CLIENT)', DESC = 'Removes any part with a certain classname from the workspace (DOES NOT REPLICATE TO SERVER)'}
 CMDs[#CMDs + 1] = {NAME = 'lockworkspace / lockws', DESC = 'Locks the whole workspace'}
 CMDs[#CMDs + 1] = {NAME = 'unlockworkspace / unlockws', DESC = 'Unlocks the whole workspace'}
 CMDs[#CMDs + 1] = {NAME = 'invisibleparts / invisparts (CLIENT)', DESC = 'Shows invisible parts'}
@@ -6378,6 +6381,32 @@ addcmd('addalias',{},function(args, speaker)
 			break
 		end
 	end
+end)
+
+local isinfhealth = false
+
+addcmd('infhealth',{'infh'},function(args, speaker)
+    isinfhealth = true
+    notify("Infinite Health", "Successfully set your health to math.huge!")
+	repeat
+        pcall(function()
+            game:GetService("Players").LocalPlayer.Character.Humanoid.Health = math.huge
+        end)
+        wait(0.2)
+    until not isinfhealth
+end)
+
+addcmd('uninfhealth',{'uninfh'},function(args, speaker)
+    isinfhealth = false
+    notify("Infinite Health", "Successfully set your health to normal!")
+	repeat
+        
+    until not isinfhealth
+end)
+
+addcmd('toggleinfhealth',{'toggleinfh'},function(args, speaker)
+    isinfhealth = not infhealth
+    notify("LikerIY", "Set infhealth to "..tostring(infhealth).."!")
 end)
 
 addcmd('removealias',{},function(args, speaker)
@@ -11212,8 +11241,8 @@ addcmd('bring',{'febring'},function(args, speaker)
 end)
 
 addcmd('versionlog',{'verlog'},function(args, speaker)
-    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[LikerIY] - Client LikerIY Version: v"..ver..".", "All")
-	notify("LikerIY", "[LikerIY] - Client LikerIY Version: v"..ver..".")
+    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("[LikerIY] - Client LikerIY Version: v"..ver, "All")
+	notify("LikerIY", "[LikerIY] - Client LikerIY Version: v"..ver)
 end)
 
 addcmd('fastbring',{'fastfebring'},function(args, speaker)
