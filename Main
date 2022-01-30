@@ -12,7 +12,7 @@ if not game:IsLoaded() then
 	notLoaded:Destroy()
 end
 
-ver = '1.1.5'
+ver = '1.1.6'
 
 Players = game:GetService("Players")
 
@@ -12091,3 +12091,11 @@ Logo:Destroy()
 Credits:Destroy()
 IntroBackground:Destroy()
 minimizeHolder()
+
+wait(2)
+
+local checkver = game:HttpGet("https://pastebin.com/raw/ATtCbQX7")
+
+if ver ~= checkver then
+    notify("LikerIY Updater", "Your LikerIY version is outdated. Please rejoin a game and reload LikerIY.")
+end
